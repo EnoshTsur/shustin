@@ -1,3 +1,4 @@
+
 package model;
 
 import java.util.Objects;
@@ -12,13 +13,23 @@ public class Point extends Object {
         this.y = y;
     }
 
-    public Point(Point point) {
-        if (point != null) {
-            this.x = point.getX();
-            this.y = point.getY();
+    public Point(Point other) {
+        if (other != null) {
+            this.x = other.getX();
+            this.y = other.getY();
 
         }
     }
+
+    public boolean isAbove(Point other) {
+        if (other == null) return false;
+        return this.getY() > other.getY();
+    }
+
+    public boolean isUnder(Point other) {
+        return !isAbove(other);
+    }
+
 
     public double getX() {
         return x;
@@ -52,10 +63,7 @@ public class Point extends Object {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "(" + x + "," + y + ")";
     }
 }
 
@@ -64,11 +72,20 @@ class Test {
     public static void main(String[] args) {
         // a -> x, y
         Point a = new Point(9.9, 7.7);
-        Point a2 = null;
-        Point a3 = new Point(a2);
-        System.out.println(a3);
+        Point b = new Point(9.9, 10.2);
+
+
+        System.out.println(b.isAbove(a));
 
     }
 
 
 }
+
+
+
+
+
+
+
+
