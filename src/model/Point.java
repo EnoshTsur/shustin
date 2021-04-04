@@ -1,8 +1,6 @@
 package model;
 
 import java.util.Objects;
-import java.util.Scanner;
-import java.util.function.Predicate;
 
 public class Point extends Object {
 
@@ -12,6 +10,14 @@ public class Point extends Object {
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point(Point point) {
+        if (point != null) {
+            this.x = point.getX();
+            this.y = point.getY();
+
+        }
     }
 
     public double getX() {
@@ -58,7 +64,9 @@ class Test {
     public static void main(String[] args) {
         // a -> x, y
         Point a = new Point(9.9, 7.7);
-        Point a2 = new Point(9.9, 7.9);
+        Point a2 = null;
+        Point a3 = new Point(a2);
+        System.out.println(a3);
 
     }
 
